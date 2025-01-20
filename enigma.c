@@ -195,7 +195,7 @@ char* decrypt(char *message, int** rotor_config, int num_rotors) {
                 int index;
                 for(int k = 0; k< ALPHABET_SIZE; k++){
                     //find the corresponding index
-                    int index = message[j] - 'A';
+                    index = message[j] - 'A';
                     if(rotor_config[i][k] == index){ 
                         index = k;
                         message[j] = 'A' + index; //update char in message
@@ -237,13 +237,13 @@ int main(int argc, char* argv[]) {
     rotate_rotors(rotos2d, num_rotations, num_rotors);
 
 
-    if (strcmp(argv[1],"d") == 0){ 
+    if (strcmp(mode,"d") == 0){ 
         printf("Message to be decrypted: %s\n", message);
         printf("Rotors to use: %s\n", indices_rotors);
         printf("Number of rotations: %d\n", num_rotations);
         printf("Decrypted message: %s\n", decrypt(message, rotos2d, num_rotors));
 
-    }else if(strcmp(argv[1],"e") == 0){
+    }else if(strcmp(mode,"e") == 0){
         printf("Message to be encrypted: %s\n", message);
         printf("Rotors to use: %s\n", indices_rotors);
         printf("Number of rotations: %d\n", num_rotations);
