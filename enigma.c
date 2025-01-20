@@ -64,8 +64,16 @@ int* parse_rotor_indices(char* rotor_ind_str, int num_rotors) {
 
     while(rotor_ind_str[i] != '\0'){
         if (rotor_ind_str[i] !=' '){
+
+            if(rotor_ind_str[i] >= '0' && rotor_ind_str[i] <= '8'){
             temp[j] = rotor_ind_str[i] - '0'; //char to int
             j++;
+
+            }
+            else{
+                printf("The rotors number is worng.\n");
+                exit(1);
+            }
         }
         i++;
     }
@@ -232,7 +240,7 @@ int main(int argc, char* argv[]) {
     char *indices_rotors = argv[4];
     int num_rotations = atoi(argv[5]);
     
-    int *indicesNumber = parse_rotor_indices(argv[4], num_rotors);
+    int *indicesNumber = parse_rotor_indices(indices_rotors, num_rotors);
     int **rotos2d = set_up_rotors(indicesNumber,num_rotors);
     rotate_rotors(rotos2d, num_rotations, num_rotors);
 
