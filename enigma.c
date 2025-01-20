@@ -52,15 +52,16 @@ int* parse_rotor_indices(char* rotor_ind_str, int num_rotors) {
     // TODO
     if (num_rotors > NUM_ROTORS){
         printf("The rotors number is worng.\n");
-        exit(1); // error in num_rotors
+        exit(1); // For testing. return -1 does not work. error in num_rotors
     }
     int* temp = malloc(num_rotors * sizeof(int));
     if (temp == NULL){
-        return NULL; //failed to allocte memory.
+        return NULL; //Failed to allocte memory for some reason.
     }
 
-    int i = 0;
+    int i = 0; 
     int j = 0; // index for result int array.
+
     while(rotor_ind_str[i] != '\0'){
         if (rotor_ind_str[i] !=' '){
             temp[j] = rotor_ind_str[i] - '0'; //char to int
@@ -112,11 +113,11 @@ int** set_up_rotors(int* rotors, int num_rotors) {
 void rotate_rotors(int** rotor_config, int rotations, int num_rotors) {
     // TODO
     if (rotations >= ALPHABET_SIZE) {
-        rotations = rotations % ALPHABET_SIZE;
+        rotations = rotations % ALPHABET_SIZE; //get the number of rotates
     }
     if (num_rotors > NUM_ROTORS){
         printf("The rotors number is worng.\n");
-        exit(1); //num number error
+        exit(1); //For testing. num number error
     }
     
     //printf("The rotations is %d.\n", rotations);
@@ -146,13 +147,14 @@ char* encrypt(char *message, int** rotor_config, int num_rotors) {
     // TODO
     if (num_rotors > NUM_ROTORS){
         printf("The rotors number is worng.\n");
-        exit(1);
+        exit(1); //For testing.
     }
 
 
     for (int i = 0; i< num_rotors; i++){
 
         for (int j = 0; message[j] != '\0'; j++){
+
             // call the help function to check
             if(isLetter(message[j])){ 
                 // lowercase to upper
