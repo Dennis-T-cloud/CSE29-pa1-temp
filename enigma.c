@@ -238,15 +238,9 @@ int main(int argc, char* argv[]) {
 
 
     if (strcmp(mode,"d") == 0){ 
-        printf("Message to be decrypted: %s\n", message);
-        printf("Rotors to use: %s\n", indices_rotors);
-        printf("Number of rotations: %d\n", num_rotations);
         printf("Decrypted message: %s\n", decrypt(message, rotos2d, num_rotors));
 
     }else if(strcmp(mode,"e") == 0){
-        printf("Message to be encrypted: %s\n", message);
-        printf("Rotors to use: %s\n", indices_rotors);
-        printf("Number of rotations: %d\n", num_rotations);
         printf("Encrypted message: %s\n", encrypt(message, rotos2d, num_rotors));
 
     }else{
