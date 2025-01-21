@@ -93,6 +93,7 @@ int** set_up_rotors(int* rotors, int num_rotors) {
         return NULL;
     }
     int** rotNo = (int**)malloc(num_rotors * sizeof(int*));
+    
     if (rotNo == NULL){
         return NULL;
     }
@@ -133,8 +134,8 @@ void rotate_rotors(int** rotor_config, int rotations, int num_rotors) {
             int temp;
             temp = rotor_config[i][ALPHABET_SIZE-1];
 
-            for (int k = 0; k<= ALPHABET_SIZE; k++){
-                rotor_config[i][ALPHABET_SIZE-k] = rotor_config[i][ALPHABET_SIZE-k-1];
+            for (int k = 1; k< ALPHABET_SIZE; k++){
+                rotor_config[i][ALPHABET_SIZE - k] = rotor_config[i][ALPHABET_SIZE - k - 1];
             }
             rotor_config[i][0] = temp;
         }
