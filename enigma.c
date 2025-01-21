@@ -119,6 +119,7 @@ int** set_up_rotors(int* rotors, int num_rotors) {
  */
 void rotate_rotors(int** rotor_config, int rotations, int num_rotors) {
     // TODO
+    if (rotations == 0) return;
     if (rotations >= ALPHABET_SIZE) {
         rotations = rotations % ALPHABET_SIZE; //get the number of rotates
     }
@@ -236,9 +237,9 @@ int main(int argc, char* argv[]) {
 
     char *mode = argv[1];
     char *message = argv[2];
-    int num_rotors= argv[3][0] - '0'; //char to int
+    int num_rotors = atoi(argv[3]);//char to int
     char *indices_rotors = argv[4];
-    int num_rotations = argv[5][0] - '0';
+    int num_rotations = atoi(argv[5]);;
     
     int *indicesNumber = parse_rotor_indices(indices_rotors, num_rotors);
     int **rotos2d = set_up_rotors(indicesNumber,num_rotors);
