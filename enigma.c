@@ -51,7 +51,7 @@ int isLetter(char a){
 int* parse_rotor_indices(char* rotor_ind_str, int num_rotors) {
     // TODO
     if (num_rotors > NUM_ROTORS){
-        printf("The rotors number is worng.\n");
+        printf("The rotors number is worng(parse1).\n");
         exit(1); // For testing. return -1 does not work. error in num_rotors
     }
     int* temp = malloc(num_rotors * sizeof(int));
@@ -63,15 +63,13 @@ int* parse_rotor_indices(char* rotor_ind_str, int num_rotors) {
     int j = 0; // index for result int array.
 
     while(rotor_ind_str[i] != '\0'){
-        if (rotor_ind_str[i] !=' '){
-
+        if (rotor_ind_str[i] != ' '){
             if(rotor_ind_str[i] >= '0' && rotor_ind_str[i] <= '8'){
-            temp[j] = rotor_ind_str[i] - '0'; //char to int
-            j++;
-
+                temp[j] = rotor_ind_str[i] - '0'; //char to int
+                j++;
             }
             else{
-                printf("The rotors number is worng.\n");
+                printf("The rotors number is worng. (parse2)\n");
                 exit(1);
             }
         }
@@ -91,7 +89,7 @@ int* parse_rotor_indices(char* rotor_ind_str, int num_rotors) {
 int** set_up_rotors(int* rotors, int num_rotors) {
     // TODO
     if (num_rotors > NUM_ROTORS){
-        printf("The rotors number is worng.\n");
+        printf("The rotors number is worng.(set)\n");
         return NULL;
     }
     int** rotNo = (int**)malloc(num_rotors * sizeof(int*));
@@ -124,7 +122,7 @@ void rotate_rotors(int** rotor_config, int rotations, int num_rotors) {
         rotations = rotations % ALPHABET_SIZE; //get the number of rotates
     }
     if (num_rotors > NUM_ROTORS){
-        printf("The rotors number is worng.\n");
+        printf("The rotors number is worng.(rotate)\n");
         exit(1); //For testing. num number error
     }
     
@@ -154,7 +152,7 @@ void rotate_rotors(int** rotor_config, int rotations, int num_rotors) {
 char* encrypt(char *message, int** rotor_config, int num_rotors) {
     // TODO
     if (num_rotors > NUM_ROTORS){
-        printf("The rotors number is worng.\n");
+        printf("The rotors number is worng.(encrypt)\n");
         exit(1); //For testing.
     }
 
@@ -188,7 +186,7 @@ char* encrypt(char *message, int** rotor_config, int num_rotors) {
 char* decrypt(char *message, int** rotor_config, int num_rotors) {
     // TODO
     if (num_rotors > NUM_ROTORS){
-        printf("The rotors number is worng.\n");
+        printf("The rotors number is worng.(decrypt)\n");
         exit(1);
     }
 
@@ -236,9 +234,9 @@ int main(int argc, char* argv[]) {
 
     char *mode = argv[1];
     char *message = argv[2];
-    int num_rotors= atoi(argv[3]); //char to int
+    int num_rotors= argv[3][0] - '0'; //char to int
     char *indices_rotors = argv[4];
-    int num_rotations = atoi(argv[5]);
+    int num_rotations = argv[5][0] - '0';
     
     int *indicesNumber = parse_rotor_indices(indices_rotors, num_rotors);
     int **rotos2d = set_up_rotors(indicesNumber,num_rotors);
