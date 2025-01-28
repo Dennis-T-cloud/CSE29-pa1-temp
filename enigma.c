@@ -56,7 +56,8 @@ int* parse_rotor_indices(char* rotor_ind_str, int num_rotors) {
     }
     int* temp = malloc(num_rotors * sizeof(int));
     if (temp == NULL){
-        return NULL; //Failed to allocte memory for some reason.
+        printf("Memory allocation failed for parse rotor.\n");
+        exit(1); //Failed to allocte memory for some reason.
     }
 
     int i = 0; 
@@ -90,12 +91,13 @@ int** set_up_rotors(int* rotors, int num_rotors) {
     // TODO
     if (num_rotors > NUM_ROTORS){
         printf("The rotors number is worng.(set)\n");
-        return NULL;
+        exit(1);
     }
     int** rotNo = (int**)malloc(num_rotors * sizeof(int*));
 
     if (rotNo == NULL){
-        return NULL;
+        printf("Memory allocation failed for set up rotor.\n");
+        exit(1);
     }
 
     for (int i = 0; i< num_rotors; i++){
